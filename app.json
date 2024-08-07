@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "Front-end",
+    "slug": "Front-end",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/mushroom_stew_mc.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/mushroom_stew_mc.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/mushroom_stew_mc.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/mushroom_stew_mc.png",
+      "config": {
+        "navigation": {
+          "enabled": true
+        }
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "react-native-google-mobile-ads": {
+      "android_app_id": "ca-app-pub-6930836635493491/6907069253",
+      "ios_app_id": "ca-app-pub-6930836635493491~3253930558"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6b881450-4f61-4735-9dbf-f86b7436eb5c"
+      }
+    }
+  }
+}
