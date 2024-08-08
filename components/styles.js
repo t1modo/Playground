@@ -31,7 +31,7 @@ export const RegisterContainer = styled.View`
     padding: 25px;
     padding-top: ${StatusBarHeight + 40}px;
     background-color: ${primary};
-`
+`;
 
 export const InnerLoginContainer = styled.View`
     flex: 1;
@@ -161,7 +161,7 @@ export const TextLinkContent = styled.Text`
 //KeyBoardAvoidingView Styles
 export const KeyboardContainer = styled.View`
     flex: 1;
-`
+`;
 
 //Loading Screen Styles
 
@@ -170,7 +170,7 @@ export const LoadingContainer = styled.View`
     padding: 25px;
     padding-top: ${StatusBarHeight + 10}px;
     background-color: ${primary};
-`
+`;
 
 export const InnerLoadingContainer = styled.View`
     flex: 1;
@@ -183,7 +183,7 @@ export const LoadingLogo = styled.Image`
     justify-content: center;
     width: 350px;
     height: 350px;
-`
+`;
 
 export const TempNextButton = styled.TouchableOpacity`
     padding: 15px;
@@ -193,12 +193,12 @@ export const TempNextButton = styled.TouchableOpacity`
     border-radius: 5px;
     margin-vertical: 5px;
     height: 60px;
-`
+`;
 
 export const LoadingButtonText = styled.Text`
     color: ${primary};
     font-size: 20px;
-`
+`;
 
 //Search Styles
 export const SearchContainer = styled.View`
@@ -232,18 +232,18 @@ export const FilterButton = styled.TouchableOpacity`
     border-radius: 10px;
     margin-vertical: 5px;
     height: 40px;
-`
+`;
 
 export const FilterButtonText = styled.Text`
     color: ${primary};
     font-size: 20px;
-`
+`;
 
 export const RecipesContainer = styled.View`
     flex-direction: column;
     width: 100%;
     height: 100%;
-`
+`;
 
 //Search Page Recipe Box Styles
 export const RecipeButton = styled.TouchableOpacity`
@@ -256,12 +256,12 @@ export const RecipeButton = styled.TouchableOpacity`
     width: 70%;
     height: 10%;
     align-self: center;
-`
+`;
 
 export const RecipeButtonText = styled.Text`
     color: ${primary};
     font-size: 30px;
-`
+`;
 
 //Recipe1 Styles
 export const RecipeContainer = styled.View`
@@ -328,12 +328,12 @@ export const RecipeSpecificButton = styled.TouchableOpacity`
     border-radius: 15px;
     margin-vertical: 5px;
     height: 60px;
-`
+`;
 
 export const RecipeSpecificText = styled.Text`
     color: ${primary};
     font-size: 20px;
-`
+`;
 
 //Planner Styles
 export const PlannerContainer = styled.View`
@@ -408,11 +408,11 @@ export const ChecklistContainer = styled.View`
     elevation: 3;
     border-radius: 30px;
     margin-bottom: 10px;
-`
+`;
 
 export const CheckboxContainer = styled.View`
     flex-direction: row;
-`
+`;
 
 export const ChecklistText = styled.Text`
     color: black;
@@ -420,18 +420,18 @@ export const ChecklistText = styled.Text`
     text-align: center;
     margin-bottom: 15px;
     font-weight: bold;
-`
+`;
 
 export const CheckboxStyles = styled.TouchableOpacity`
     color: black;
     padding: 10px;
-`
+`;
 
 export const CheckboxText = styled.Text`
     color: black;
     font-size: 15px;
     padding: 10px;
-`
+`;
 
 //Stores Styles
 export const StoresContainer = styled.View`
@@ -465,7 +465,7 @@ export const ProfileContainer = styled.View`
     padding: 25px;
     padding-top: ${StatusBarHeight + 20}px;
     background-color: ${primary};
-`
+`;
 
 export const InnerProfileContainer = styled.View`
     flex: 1;
@@ -499,7 +499,7 @@ export const ProfileText = styled.Text`
     text-align: center;
     font-size: 20px;
     padding: 5px;
-`
+`;
 
 export const ProfileInputLabel = styled.Text`
     color: ${tertiary};
@@ -516,7 +516,7 @@ export const FriendButton = styled.TouchableOpacity`
     margin-vertical: 15px;
     width: 80%;
     height: 60px;
-`
+`;
 
 export const ProfilePicture = styled.TouchableOpacity`
     width: 100px;
@@ -524,7 +524,7 @@ export const ProfilePicture = styled.TouchableOpacity`
     border-radius: 50px;
     background-color: cornflowerblue;
     margin-bottom: 20px;
-`
+`;
 
 //Friend's List Styles
 export const FriendsListSearchContainer = styled.View`
@@ -533,7 +533,7 @@ export const FriendsListSearchContainer = styled.View`
     margin: 25px;
     width: 90%;
     align-items: center;
-`
+`;
 
 export const FriendsListInnerSearchContainer = styled.View`
     padding: 10px;
@@ -543,14 +543,14 @@ export const FriendsListInnerSearchContainer = styled.View`
     border-radius: 10px;
     align-items: center;
     border: 1px solid #ccc;
-`
+`;
 
 export const BoxContainer = styled.View`
     flex-grow: 1;
     width: 100%;
     align-items: center;
     flex-direction: column;
-`
+`;
 
 export const FriendsListBox = styled.TouchableOpacity`
     width: 90%;
@@ -562,16 +562,32 @@ export const FriendsListBox = styled.TouchableOpacity`
     justify-content: space-between;
     flex-direction: row;
     margin-bottom: 10px;
-`
+`;
 
 export const ProfilePic = styled.View`
     width: 80px;
     height: 80px;
     border-radius: 40px;
     background-color: cornflowerblue;
-`
+`;
 
 export const UserText = styled.Text`
     font-size: 25px;
     padding: 25px;
+`;
+
+//Fetch Location Styles
+
+export const LocationContainer = styled.View`
+    width: 100%;
+    align-items: center;
+`
+
+export const InnerLocationContainer = styled.View`
+    padding: 10px;
+    flex-direction: row;
+    background-color: #D9DBDA;
+    border-radius: 10px;
+    align-items: center;
+    border: 1px solid #ccc;
 `
