@@ -25,7 +25,7 @@ const Shop = ({navigation}) => {
     return (
         <ShopContainer>
             <InnerShopContainer>
-                <ShopButton><TextLink onPress={() => navigation.navigate("Stores")}>
+                <ShopButton><TextLink onPress={() => navigation.navigate("FetchLocation")}>
                     <StoresText>Stores</StoresText>
                 </TextLink></ShopButton>
 

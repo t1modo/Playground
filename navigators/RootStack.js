@@ -15,6 +15,7 @@ import Stores from './../screens/Stores';
 import FriendsList from './../screens/FriendsList';
 import Profile from "./../screens/Profile";
 import EditProfile from "./../screens/EditProfile";
+import FetchLocation from './../components/FetchLocation';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,10 @@ const RootStack = () => {
             <Stack.Screen
                 name="EditProfile"
                 component={EditProfile}
+            />
+            <Stack.Screen
+                name="FetchLocation"
+                component={FetchLocation}
             />
         </Stack.Navigator>
     );
