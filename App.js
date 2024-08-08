@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <RootStack />
+      <FetchLocation />
     </NavigationContainer>
   );
 };
