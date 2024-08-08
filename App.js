@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 
 import Profile from './screens/Profile';
 import FriendsList from './screens/FriendsList';
+import FetchLocation from './components/FetchLocation';
 
 const App = () => {
 
