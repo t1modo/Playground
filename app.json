@@ -12,13 +12,15 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.timodo.Frontend"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/mushroom_stew_mc.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.timodo.Frontend"
     },
     "web": {
       "favicon": "./assets/mushroom_stew_mc.png",
