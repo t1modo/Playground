@@ -583,9 +583,10 @@ export const LocationContainer = styled.View`
 `
 
 export const InnerLocationContainer = styled.View`
-    padding: 10px;
+    flex-direction: row;
     background-color: #D9DBDA;
-    border-radius: 10px;
+    padding: 5px;
+    borderRadius: 5px;
     align-items: center;
     border: 1px solid #ccc;
 `

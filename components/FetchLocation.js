@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Text, ActivityIndicator, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { Text, ActivityIndicator, View, StyleSheet, Dimensions, Button } from 'react-native';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import * as Location from 'expo-location';
 import axios from 'axios'; // Import axios for API requests
 
@@ -34,13 +34,8 @@ const FetchLocation = () => {
         });
         setLocation(currentLocation.coords);
 
-        // Calculate the distance
-        const distanceInMeters = getDistance(
-          { latitude: currentLocation.coords.latitude, longitude: currentLocation.coords.longitude },
-          { latitude: starbirdchicken.latitude, longitude: starbirdchicken.longitude }
-        );
-        const distanceInMiles = distanceInMeters * 0.000621371; // Convert meters to miles
-        setDistance(distanceInMiles);
+        // Fetch distance using Google Maps Distance Matrix API
+        await fetchDistance(currentLocation.coords.latitude, currentLocation.coords.longitude);
 
         if (mapRef.current) {
           mapRef.current.animateToRegion({
@@ -60,16 +55,32 @@ const FetchLocation = () => {
     getLocation();
   }, []);
 
-    const [query, setQuery] = useState('');
+  const fetchDistance = async (userLat, userLng) => {
+    try {
+      const response = await axios.get('https://maps.googleapis.com/maps/api/distancematrix/json', {
+        params: {
+          origins: `${userLat},${userLng}`,
+          destinations: `${starbirdchicken.latitude},${starbirdchicken.longitude}`,
+          key: GOOGLE_MAPS_API_KEY,
+        },
+      });
 
-    const handleChange = (text) => {
-        setQuery(text);
-    };
+      console.log('API Response:', response.data); // Log the full response for debugging
 
-    const handleSearch = () => {
-        // Perform search action with query
-        console.log('Searching for:', query);
-    };
+      const result = response.data;
+      if (result.rows[0] && result.rows[0].elements[0]) {
+        // Convert meters to miles
+        const distanceInMeters = result.rows[0].elements[0].distance.value;
+        const distanceInMiles = distanceInMeters * 0.000621371; // Convert meters to miles
+        setDistance(distanceInMiles.toFixed(2)); // Round to two decimal places
+      } else {
+        setDistance('Unable to calculate distance');
+      }
+    } catch (error) {
+      console.error('Error fetching distance:', error); // Log any errors
+      setErrorMsg('Error fetching distance');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -78,56 +89,37 @@ const FetchLocation = () => {
       ) : errorMsg ? (
         <Text>{errorMsg}</Text>
       ) : (
-        <View style={styles.topbar}>
-
-            <LocationContainer>
-                <InnerLocationContainer>
-                    <Feather
-                        name="search"
-                        size={20}
-                        color="black"
-                        style={{ marginLeft: 8, marginRight: 8 }}
-                    />
-                    <SearchTextInput
-                        placeholder="Type to search . . ."
-                        value={query}
-                        onChangeText={handleChange}
-                        onSubmitEditing={handleSearch}
-                    />
-                    {query.length > 0 && (
-                        <TouchableOpacity onPress={() => setQuery('')}>
-                            <Feather name="x" size={30} color="black" />
-                        </TouchableOpacity>
-                    )}
-                </InnerLocationContainer>
-            </LocationContainer>
-
-            <MapView
-                ref={mapRef} // Attach ref to MapView
-                style={styles.map}
-                initialRegion={{
-                    latitude: starbirdchicken.latitude,
-                    longitude: starbirdchicken.longitude,
-                    latitudeDelta: 0.05,
-                    longitudeDelta: 0.05,
+        <View style={styles.mapContainer}>
+          <MapView
+            ref={mapRef} // Attach ref to MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: starbirdchicken.latitude,
+              longitude: starbirdchicken.longitude,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
+            }}
+            showsUserLocation={true} // Optional: Show user location on the map
+          >
+            {location && (
+              <Marker
+                coordinate={{
+                  latitude: location.latitude,
+                  longitude: location.longitude,
                 }}
-                showsUserLocation={true} // Optional: Show user location on the map
-                >
-                {location && (
-                    <Marker
-                    coordinate={{
-                        latitude: location.latitude,
-                        longitude: location.longitude,
-                    }}
-                    title={`Your Location`}
-                    />
-                )}
-                <Marker
-                    coordinate={starbirdchicken}
-                    title="Starbird Chicken"
-                    description={`~ ${distance ? distance.toFixed(2) + ' miles away' : ''}`}
-                />
-            </MapView>
+                title={`Your Location`}
+              />
+            )}
+            <Marker coordinate={starbirdchicken}>
+              <Callout>
+                <View style={styles.calloutContainer}>
+                  <Text>Starbird Chicken</Text>
+                  <Text>{distance ? `Distance: ${distance} miles` : 'Calculating distance...'}</Text>
+                </View>
+              </Callout>
+            </Marker>
+          </MapView>
+          <Button title="Refresh Distance" onPress={() => location && fetchDistance(location.latitude, location.longitude)} />
         </View>
       )}
     </View>
@@ -137,22 +129,18 @@ const FetchLocation = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center', // Ensure the map is centered in the container
+  },
+  mapContainer: {
+    flex: 1,
   },
   map: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
-  topbar: {
-    flex: 1,
-    margin: 10,
-    backgroundColor: "white",
-    padding: 10,
-    borderRadius: 20,
-    alignItems: "center",
-  }
+  calloutContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default FetchLocation;
