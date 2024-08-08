@@ -577,7 +577,6 @@ export const UserText = styled.Text`
 `;
 
 //Fetch Location Styles
-
 export const LocationContainer = styled.View`
     width: 100%;
     align-items: center;
@@ -585,7 +584,6 @@ export const LocationContainer = styled.View`
 
 export const InnerLocationContainer = styled.View`
     padding: 10px;
-    flex-direction: row;
     background-color: #D9DBDA;
     border-radius: 10px;
     align-items: center;

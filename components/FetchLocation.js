@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Text, ActivityIndicator, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
-import { getDistance } from 'geolib';
-import Feather from 'react-native-vector-icons/Feather';
-import { InnerLocationContainer, LocationContainer, SearchTextInput } from "../components/styles";
+import axios from 'axios'; // Import axios for API requests
+
+const GOOGLE_MAPS_API_KEY = 'AIzaSyCUaaIiZTo0_7-DJzBfnfwCqByIIFdpx0s'; // Replace with your API key
 
 // Coordinates for Starbird Chicken
 const starbirdchicken = {
