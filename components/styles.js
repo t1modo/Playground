@@ -164,7 +164,6 @@ export const KeyboardContainer = styled.View`
 `;
 
 //Loading Screen Styles
-
 export const LoadingContainer = styled.View`
     flex: 1;
     padding: 25px;
@@ -354,7 +353,7 @@ export const InnerPlannerContainer = styled.View`
 export const PlannerBox = styled.TouchableOpacity`
     width: 90%;
     height: 12%;
-    background-color: white;
+    background-color: #FFB6C1;
     padding: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     elevation: 3;
@@ -385,18 +384,22 @@ export const InnerShopContainer = styled.View`
 `;
 
 export const ShopButton = styled.TouchableOpacity`
-    width: 70%;
-    height: 10%;
-    background-color: seagreen;
+    background-color: #90EE90;
     padding: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    elevation: 3;
-    border-radius: 20px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ButtonContent = styled.View`
+    flex-direction: row;
+    align-items: center;
 `;
 
 export const StoresText = styled.Text`
-    font-size: 40px;
-    text-align: center;
+    font-size: 30px;
+    margin-left: 8px;
+    color: #000;
 `;
 
 export const ChecklistContainer = styled.View`
